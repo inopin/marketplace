@@ -1,0 +1,264 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0d0f14;
+  --bg-panel: rgba(22, 26, 34, 0.85);
+  --bg-panel-2: rgba(26, 30, 40, 0.9);
+  --bg-row: rgba(16, 19, 26, 0.9);
+  --bg-row-alt: rgba(20, 24, 32, 0.9);
+  --border: rgba(212, 162, 76, 0.20);
+  --border-strong: rgba(212, 162, 76, 0.40);
+  --accent: #d4a24c;
+  --accent-hi: #f0c877;
+  --text: #e8ddc7;
+  --text-dim: #a89c88;
+  --text-mute: #5a5244;
+  --green: #a8d47a;
+  --red: #e87a5a;
+  --blue: #7aa8d4;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 15% 8%, rgba(212,162,76,0.06), transparent 50%),
+    radial-gradient(circle at 85% 92%, rgba(140,60,30,0.08), transparent 55%),
+    var(--bg);
+  color: var(--text);
+  font-family: "Georgia", "Times New Roman", serif;
+  padding: 24px 20px 60px;
+}
+
+/* ====== ШАПКА ====== */
+.top {
+  text-align: center;
+  margin-bottom: 22px;
+}
+.title {
+  font-size: 20px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--accent-hi);
+  margin-bottom: 6px;
+}
+.title-mark {
+  color: var(--accent);
+  margin-right: 8px;
+}
+.subtitle {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--text-mute);
+  font-style: italic;
+}
+
+/* ====== ПОИСК ====== */
+.search-wrap {
+  max-width: 900px;
+  margin: 0 auto 18px;
+}
+.search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--bg-panel);
+  border: 1px solid var(--border-strong);
+  border-radius: 3px;
+  padding: 0 14px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.search-box:focus-within {
+  border-color: var(--accent-hi);
+  box-shadow: 0 0 18px rgba(240, 200, 119, 0.18);
+}
+.search-icon {
+  font-size: 18px;
+  color: var(--accent);
+  margin-right: 10px;
+}
+#search {
+  flex: 1;
+  font-family: inherit;
+  font-size: 15px;
+  padding: 14px 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text);
+}
+#search::placeholder { color: var(--text-mute); }
+#search::-webkit-search-cancel-button { display: none; }
+
+.search-clear {
+  font-family: inherit;
+  font-size: 13px;
+  width: 28px;
+  height: 28px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  color: var(--text-mute);
+  cursor: pointer;
+  transition: all 0.2s;
+  opacity: 0;
+  pointer-events: none;
+}
+.search-clear.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+.search-clear:hover {
+  color: var(--red);
+  border-color: var(--red);
+}
+
+.search-hint {
+  font-size: 12px;
+  color: var(--text-mute);
+  letter-spacing: 1px;
+  margin-top: 8px;
+  padding-left: 4px;
+  min-height: 16px;
+  font-style: italic;
+}
+
+/* ====== ВКЛАДКИ ====== */
+.tabs {
+  max-width: 1100px;
+  margin: 0 auto 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+}
+.tab {
+  font-family: inherit;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.tab:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+.tab.active {
+  background: rgba(212, 162, 76, 0.12);
+  color: var(--accent-hi);
+  border-color: var(--accent-hi);
+  box-shadow: 0 0 14px rgba(240, 200, 119, 0.15);
+}
+.tab .count {
+  font-size: 10px;
+  color: var(--text-mute);
+  margin-left: 6px;
+  letter-spacing: 0;
+}
+.tab.active .count { color: var(--accent); }
+
+/* ====== ТАБЛИЦА ====== */
+main {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.table-wrap {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+thead th {
+  position: sticky;
+  top: 0;
+  background: var(--bg-panel-2);
+  padding: 12px 12px;
+  text-align: left;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  border-bottom: 1px solid var(--border-strong);
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.15s;
+}
+thead th:hover { color: var(--accent-hi); }
+thead th.sorted-asc::after  { content: " ▲"; font-size: 9px; }
+thead th.sorted-desc::after { content: " ▼"; font-size: 9px; }
+
+tbody td {
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(212, 162, 76, 0.06);
+  color: var(--text-dim);
+  vertical-align: top;
+}
+tbody tr:nth-child(odd)  { background: var(--bg-row); }
+tbody tr:nth-child(even) { background: var(--bg-row-alt); }
+tbody tr:hover { background: rgba(212, 162, 76, 0.06); }
+
+tbody td:first-child { color: var(--text); }
+
+/* ====== ЯЧЕЙКИ ====== */
+.cell-name { color: var(--accent-hi); font-weight: 600; }
+.cell-price { color: var(--accent-hi); white-space: nowrap; }
+.cell-sub { color: var(--text-mute); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+.cell-cat {
+  display: inline-block;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 2px;
+  background: rgba(212, 162, 76, 0.12);
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.tech-primitive { color: var(--text-mute); }
+.tech-ordinary  { color: var(--green); }
+.tech-advanced  { color: var(--blue); }
+.tech-faction   { color: var(--red); }
+
+/* ====== ПУСТО ====== */
+.empty {
+  padding: 60px 20px;
+  text-align: center;
+  color: var(--text-mute);
+  font-style: italic;
+  letter-spacing: 1px;
+}
+
+/* ====== СНОСКА ====== */
+.bottom {
+  max-width: 1300px;
+  margin: 24px auto 0;
+  text-align: center;
+  font-size: 11px;
+  color: var(--text-mute);
+  letter-spacing: 1px;
+  font-style: italic;
+}
+
+/* ====== МОБИЛЬНЫЙ ====== */
+@media (max-width: 700px) {
+  body { padding: 16px 10px 40px; }
+  .title { font-size: 15px; letter-spacing: 3px; }
+  .tab { font-size: 10px; padding: 6px 10px; }
+  thead th { font-size: 9px; padding: 8px 8px; }
+  tbody td { font-size: 12px; padding: 8px; }
+}

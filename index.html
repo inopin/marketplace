@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Каталог снаряжения · Coriolis</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="title">
+    <span class="title-mark">◈</span>
+    Каталог снаряжения
+  </div>
+  <div class="subtitle">Третий Горизонт · таблицы снаряжения</div>
+</header>
+
+<div class="search-wrap">
+  <div class="search-box">
+    <span class="search-icon">⌕</span>
+    <input
+      id="search"
+      type="search"
+      placeholder="Поиск по названию, особенностям, тех. уровню…"
+      autocomplete="off"
+      spellcheck="false"
+    >
+    <button id="search-clear" class="search-clear" title="Очистить">✕</button>
+  </div>
+  <div class="search-hint" id="search-hint"></div>
+</div>
+
+<nav class="tabs" id="tabs"></nav>
+
+<main id="content"></main>
+
+<footer class="bottom">
+  <span>Нажми на заголовок столбца, чтобы отсортировать</span>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
